@@ -1,7 +1,6 @@
 package com.projectnelio.dslist.dto;
 
 import com.projectnelio.dslist.entities.Game;
-import jakarta.persistence.Column;
 
 public class GamesMinDTO {
     private Long id;
