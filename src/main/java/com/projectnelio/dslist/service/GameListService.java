@@ -2,33 +2,31 @@ package com.projectnelio.dslist.service;
 
 import com.projectnelio.dslist.dto.GameListDTO;
 import com.projectnelio.dslist.dto.GamesDTO;
-import com.projectnelio.dslist.dto.GamesMinDTO;
 import com.projectnelio.dslist.entities.Game;
 import com.projectnelio.dslist.entities.GameList;
-import com.projectnelio.dslist.repository.GameRepository;
+import com.projectnelio.dslist.repository.GameListRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 
 @Service
-public class GameService {
+public class GameListService {
 
     @Autowired
-    private GameRepository gameRepository;
+    private GameListRepository gameListRepository;
 
     @Transactional(readOnly = true)
-    public GamesDTO findById(Long id) {
-        Game result = gameRepository.findById(id).get();
-        return new GamesDTO(result);
+    public GameListDTO findById(Long id) {
+        GameList result = gameListRepository.findById(id).get();
+        return new GameListDTO(result);
     }
 
     @Transactional(readOnly = true)
-    public List<GamesMinDTO> findAll(){
-        List<Game> repository = gameRepository.findAll();
-        return repository.stream().map(x -> new GamesMinDTO(x)).toList();
+    public List<GameListDTO> findAll(){
+        List<GameList> repository = gameListRepository.findAll();
+        return repository.stream().map(x -> new GameListDTO(x)).toList();
     }
 
 
